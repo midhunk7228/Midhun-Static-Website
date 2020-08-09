@@ -24,6 +24,9 @@
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
 
+  <!-- ajax/libs/jquery/3.5.1/jquery.min.js library-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
   
 </head>
 
@@ -284,7 +287,7 @@
                     </h5>
                   </div>
                   <div>
-                      <form action="mailto:midkallanoor@gmail.com" method="post" role="form" class="contactForm">
+                      <form action="" id="submit-form" role="form" >
                       <div id="sendmessage">Your message has been sent. Thank you!</div>
                       <div id="errormessage"></div>
                       <div class="row">
@@ -359,12 +362,8 @@
             <div class="copyright-box">
               <p class="copyright">&copy; Copyright <strong>Midhun</strong>. All Rights Reserved</p>
               <div class="credits">
-                <!--
-                  All the links in the footer should remain intact.
-                  You can delete the links only if you purchased the pro version.
-                  Licensing information: https://bootstrapmade.com/license/
-                  Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=DevFolio
-                -->
+                
+
                 Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
               </div>
             </div>
@@ -395,6 +394,7 @@
 
   <!--  Chat Window -->
   <!--Start of Tawk.to Script-->
+
   <script type="text/javascript">
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
   (function(){
@@ -406,7 +406,30 @@
   s0.parentNode.insertBefore(s1,s0);
   })();
   </script>
+
   <!--End of Tawk.to Script-->
+
+  <!-- Contact Form Submitted Script-->
+
+  <script>
+    $("#submit-form").submit((e)=>{
+        e.preventDefault()
+        $.ajax({
+            url:"https://script.google.com/macros/s/AKfycbwjDxVK-YrJB3NJ5Mv2J9mBsuPrlRQ8pRFJ4XFC4w/exec",
+            data:$("#submit-form").serialize(),
+            method:"post",
+            success:function (response){
+                alert("Form submitted successfully")
+                window.location.reload()
+                //window.location.href="https://google.com"
+            },
+            error:function (err){
+                alert("Something Error")
+
+            }
+        })
+    })
+  </script>
 
 
 </body>
